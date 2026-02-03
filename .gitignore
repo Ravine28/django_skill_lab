@@ -1,0 +1,7 @@
+# Python bytecode --> sem necessidade do git versionar uma vez que o próprio Python cria sozinho
+# Pasta de cache do Python
+__pycache__/
+# Bytecode compilado
+*.pyc
+# Bytecode otimizado (legado)
+*.pyo
