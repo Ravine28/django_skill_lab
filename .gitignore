@@ -1,7 +1,60 @@
-# Python bytecode --> sem necessidade do git versionar uma vez que o próprio Python cria sozinho
-# Pasta de cache do Python
+#  Arquivos que contêm informações sensíveis ou redundantes devem ser adicionados imediatamente ao .gitignore para que nunca fiquem visíveis no histórico do Git.
+
+# Python bytecode --> sem necessidade do git versionar uma vez que o próprio Python cria sozinho. Pasta de cache do Python
 __pycache__/
-# Bytecode compilado
+*.py[cod]
+*$py.class
+*.so
+*.pyd
 *.pyc
-# Bytecode otimizado (legado)
 *.pyo
+
+# Banco de Dados local - Evitar que dados de teste específicos do seu ambiente de desenvolvimento sejam rastreados e compartilhados
+db.sqlite3
+db.sqlite3-journal
+
+# Django
+*.log
+media/
+staticfiles/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Variáveis de Ambiente
+.env
+.env.*
+*.env
+
+#IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testes
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+
+# Build e Distribuições
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Temporários
+*.tmp
+*.bak
+*.old
