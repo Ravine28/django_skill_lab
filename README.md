@@ -24,7 +24,7 @@ O objetivo é permitir:
 
 * Python 3.13
 * Django 6.0.1
-* Django Rest Framework
+* Django Rest Framework 3.16.1
 
 ### Frontend
 
