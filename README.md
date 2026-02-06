@@ -1,187 +1,366 @@
 # Django Skill Lab
 
 ## Descrição do Projeto
-Este projeto se trata de um laboratório prático em Django com Django Rest Framework (DRF) para criação e exposição de uma API de controle de acesso entre Clientes e Sistemas.
-    O objetivo é permitir:
-        * Cadastro de Clientes
-        * Cadastro de Sistemas
-        * Acessos (vínculo cliente-sistema)
-           Select
-           Create
-           Revoke
-           Update
-           Delete
+
+Este projeto se trata de um laboratório prático em **Django** com **Django Rest Framework (DRF)** para criação e exposição de controle de acesso entre **Clientes** e **Sistemas**.
+
+O objetivo é permitir:
+
+* Cadastro de Clientes
+* Cadastro de Sistemas
+* Gerenciamento de Acessos (vínculo cliente ↔ sistema)
+
+  * Select
+  * Create
+  * Revoke
+  * Update
+  * Delete
 
 ---
 
-## Estrutura do Projeto - Stack (Django + Django Rest Framework)
+## Estrutura do Projeto — Stack
+
 ### Backend
- * Python 3.13
- * Django 6.01
- * Django Rest Framework
+
+* Python 3.13
+* Django 6.0.1
+* Django Rest Framework
 
 ### Frontend
- * Tempĺate Django
+
+* Templates Django
 
 ### Banco de Dados
- * SQLite (Local)
+
+* SQLite (local, para desenvolvimento)
+
 Este repositório segue a estrutura padrão de um projeto Django, separando claramente **configuração**, **aplicação** e **dados**.
-Abaixo está a função de cada diretório e arquivo principal.
 
 ---
 
+## Arquivos principais
+
 ### manage.py
+
 Script de gerenciamento do Django.
-É usado para executar comandos administrativos como:
-- rodar o servidor
-- criar migrations
-- aplicar migrations
-- criar superusuários
+
+Usado para executar comandos administrativos como:
+
+* Rodar o servidor - python manage.py runserver
+* Criar migrations - python manage.py makemigrations
+* Aplicar migrations - python manage.py migrate
+* Criar superusuários - python manage.py createsuperuser
+
 Funciona como o ponto de entrada para interação com o projeto.
 
 ---
 
 ### db.sqlite3
+
 Banco de dados local utilizado durante o desenvolvimento.
-É um banco baseado em arquivo, adequado para aprendizado e prototipagem.
-Em ambientes de produção, normalmente é substituído por bancos como PostgreSQL.
+
+* Baseado em arquivo (serializer: JSON)
+* Adequado para aprendizado e prototipagem
+* Em produção, normalmente substituído por PostgreSQL
 
 ---
 
-## django_skill_labs/ (Projeto)
+## Projeto: django_skill_lab/
+
 Diretório responsável pelas **configurações globais** do Django.
-Ele não contém regras de negócio.
+Não contém regras de negócio.
 
----
+Armazena:
+
+* django_skill_labs
+* README.md
+* .git
+* .gitignore
+* .venv
 
 ### settings.py
+
 Arquivo central de configuração do projeto.
+
+Diretório: django_skill_lab/django_skill_labs/django_skill_labs
+
 Define:
-- aplicações instaladas
-- banco de dados
-- middlewares
-- segurança
-- idioma e timezone
-Todas as decisões estruturais do projeto passam por aqui.
+
+* Aplicações instaladas
+* Banco de dados
+* Middlewares
+* Segurança
+* Idioma e timezone
 
 ---
 
 ### urls.py
+
 Define o roteamento da aplicação.
-Mapeia URLs para views, determinando qual lógica será executada para cada caminho acessado.
+
+Diretório: django_skill_lab/django_skill_labs/django_skill_labs
+
+* Mapeia URLs para views
+* Determina qual lógica será executada para cada caminho
 
 ---
 
 ### wsgi.py
+
+Diretório: django_skill_lab/django_skill_labs/django_skill_labs
+
 Ponto de entrada para servidores web tradicionais em produção.
-Permite que servidores como Gunicorn ou uWSGI se comuniquem com o Django.
+
+Permite que servidores como:
+
+* Gunicorn
+* uWSGI
+
+se comuniquem com o Django.
 
 ---
 
 ### asgi.py
+
+Diretório: django_skill_lab/django_skill_labs/django_skill_labs
+
 Ponto de entrada para servidores assíncronos.
-Utilizado em aplicações que exigem comunicação em tempo real, como WebSockets.
+
+Usado em aplicações que exigem:
+
+* Comunicação em tempo real
+* WebSockets
 
 ---
 
 ## Aplicações (apps)
-### apps.py
-Configuração básica do app.
-Define nome e metadados utilizados pelo Django para registrar a aplicação.
 
----
-
-### app_django_lab/ 
 Um app Django representa um **módulo funcional** da aplicação.
 Cada app deve resolver um problema específico.
 
-### app_clientes/
+Diretório: django_skill_lab/django_skill_labs/
 
-### app_sistemas/
+Armazena:
 
-### app_acessos/
+* admin.py
+* apps.py
+* __init__.py
+* migrations
+* models.py
+* __pycache__
+* templates
+* tests.py
+* urls.py
+* views.py
+
+Estrutura:
+
+```
+app_django_lab/
+app_clientes/
+app_sistemas/
+app_acessos/
+```
+
+### apps.py
+
+Diretório: django_skill_lab/django_skill_labs/app_django_lab
+
+Configuração básica do app.
+
+* Define nome
+* Define metadados usados pelo Django
 
 ---
 
 ### models.py
+
+Diretório: django_skill_lab/django_skill_labs/app_django_lab
+
 Define os modelos de dados da aplicação.
-Cada modelo representa uma tabela no banco de dados e encapsula regras relacionadas aos dados.
+
+* Cada modelo representa uma tabela
+* Contém regras relacionadas aos dados
 
 ---
 
 ### views.py
+
+Diretório: django_skill_lab/django_skill_labs/app_django_lab
+
 Contém a lógica que processa requisições HTTP.
-Recebe a requisição, executa a lógica necessária e retorna uma resposta.
+
+Fluxo:
+
+1. Recebe a requisição
+2. Executa a lógica
+3. Retorna resposta
 
 ---
 
 ### admin.py
-Configura como os modelos aparecem no painel administrativo do Django.
-Permite gerenciar dados sem necessidade de criar interfaces manuais.
+
+Diretório: django_skill_lab/django_skill_labs/app_django_lab
+
+Configura como os modelos aparecem no painel administrativo.
+
+Permite:
+
+* Gerenciar dados
+* Testar o sistema
+* Evitar criar interfaces manuais
 
 ---
 
 ### tests.py
-Contém testes automatizados da aplicação.
-Serve para validar comportamento e evitar regressões.
+
+Diretório: django_skill_lab/django_skill_labs/app_django_lab
+
+Contém testes automatizados.
+
+Objetivos:
+
+* Validar comportamento
+* Evitar regressões
 
 ---
 
 ### migrations/
+
+Diretório: django_skill_lab/django_skill_labs/app_django_lab
+
 Armazena o histórico de alterações no banco de dados.
-Cada migration representa uma mudança estrutural nos modelos.
+
+* Cada migration representa uma mudança estrutural
 
 ---
 
-## Como subir projeto localmente
-### 1. Clonar o  repositório
-    git clone git@github.com:Ravine28/django_skill_lab.git 
-    cd django_skill_lab
+## Como subir o projeto localmente
 
-    OBS: cadastre a chave SSH e a vincule ao seu ambiente dev local
+### 1. Clonar o repositório
 
-### 2. Criar e ativar o ambiente virtual (.venv)
-    python3 -m venv .venv source 
-    .venv/bin/activate
+```bash
+git clone git@github.com:Ravine28/django_skill_lab.git
+cd django_skill_lab
+```
+
+> Cadastre a chave SSH e vincule ao seu ambiente local.
+
+---
+
+### 2. Criar e ativar o ambiente virtual
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+---
 
 ### 3. Instalar dependências
-    pip install django
-    pip install djangorestframework
-    pip install -r requirements.txt
+
+```bash
+pip install django
+pip install djangorestframework
+pip install -r requirements.txt
+```
+
+---
 
 ### 4. Rodar migrations
-    python manage.py migrate
-        * certifique-se de estar dentro do diretório onde o arquivo _manage.py_ está!
+
+```bash
+python manage.py migrate
+```
+
+> Certifique-se de estar no diretório onde o arquivo `manage.py` está.
+
+---
 
 ### 5. Criar superusuário (opcional)
-    * Usuário com acesso total ao painel administrativo do Django. Utilizado para:
-        - Entrar no /admin
-        - Criar dados manualmente
-        - Testar o sistema sem usar API ou frontend
-        - Gerenciar usuários e permissões
-    python manage.py createsuperuser
+
+Usuário com acesso total ao painel administrativo.
+
+Usado para:
+
+* Entrar no `/admin`
+* Criar dados manualmente
+* Testar o sistema sem API ou frontend
+* Gerenciar usuários e permissões
+
+```bash
+python manage.py createsuperuser
+```
+
+---
 
 ### 6. Subir o servidor
-    - Liga um servidor local
-    - Abre uma porta (geralmente 8000)
-    - Fica esperando requisições
-    python manage.py runserver
+
+Liga um servidor local:
+
+* Abre uma porta (geralmente 8000)
+* Fica aguardando requisições
+
+```bash
+python manage.py runserver
+```
+
+Acesse no navegador:
+
+```
+http://127.0.0.1:8000
+```
+
+---
 
 ## Variáveis de ambiente
-    * Proteger dados sensíveis evitando que as mesmas subam para GitHub
+
+Objetivo:
+
+* Proteger dados sensíveis
+* Evitar que credenciais sejam enviadas ao GitHub
+
+Exemplo de variáveis:
+
+* SECRET_KEY
+* DEBUG
+* DATABASE_URL
+
+---
 
 ## Fluxo Git resumido
-### Crie uma nova branch
-    * Não é uma boa prática desenvolver utilizando a branch _main_
-    git switch main 
-    git pull origin main 
-    git switch -c tipo-feature/nome-da-feature
 
-### Commit
-   * Após desenvolver o código
-   git add .
-   git commit -m "feature: breve descrição do commit(alteração)
+### 1. Criar nova branch
 
-### Atualizar repositório GitHub
-    git push -u origin tipo-feature/nome-da-feature
-    * Depois, abrir Pull Request no GitHub.
+Não é boa prática desenvolver diretamente na `main`.
+
+```bash
+git switch main
+git pull origin main
+git switch -c tipo-feature/nome-da-feature
+```
+
+---
+
+### 2. Commit
+
+Após desenvolver o código:
+
+```bash
+git add .
+git commit -m "feature: breve descrição da alteração"
+```
+
+---
+
+### 3. Enviar para o GitHub
+
+```bash
+git push -u origin tipo-feature/nome-da-feature
+```
+
+Depois:
+
+* Abrir Pull Request no GitHub
+* Revisar
+* Fazer merge na `main`
