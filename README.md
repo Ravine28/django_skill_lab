@@ -3,14 +3,14 @@
 ## Descrição do Projeto
 Este projeto se trata de um laboratório prático em Django com Django Rest Framework (DRF) para criação e exposição de uma API de controle de acesso entre Clientes e Sistemas.
     O objetivo é permitir:
-        - Cadastro de Clientes
-        - Cadastro de Sistemas
-        - Acessos (vínculo cliente-sistema)
-           Select
-           Create
-           Revoke
-           Update
-           Delete
+    Cadastro de Clientes
+    Cadastro de Sistemas
+    Acessos (vínculo cliente-sistema)
+        Select
+        Create
+        Revoke
+        Update
+        Delete
 
 ---
 
