@@ -19,7 +19,7 @@ Este projeto se trata de um laboratório prático em Django com Django Rest Fram
 
 * Python 3.13
 * Django 6.0.1
-* Django Rest Framework
+* Django Rest Framework 3.16.1
 
 ### Frontend
  * Tempĺate Django
