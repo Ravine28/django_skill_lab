@@ -16,9 +16,10 @@ Este projeto se trata de um laboratório prático em Django com Django Rest Fram
 
 ## Estrutura do Projeto - Stack (Django + Django Rest Framework)
 ### Backend
- * Python 3.13
- * Django 6.01
- * Django Rest Framework
+
+* Python 3.13
+* Django 6.0.1
+* Django Rest Framework 3.16.1
 
 ### Frontend
  * Tempĺate Django
