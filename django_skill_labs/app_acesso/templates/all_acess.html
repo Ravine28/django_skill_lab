@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Acessos Registrados</h1>
+  
+<ul>
+  {% for x in acessos_html %}
+    <li>{{ x.sistema.nome_sistema }} {{ x.cliente.nome_cliente }}</li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
