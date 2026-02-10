@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('', include('app_acesso.urls')),
-    path('admin/', admin.site.urls),
+    path('', include('access.urls')), # Se a URL estiver vazia, vá para a App "access" via access.urls
+    path('admin/', admin.site.urls), # Se a URL iniciar em "admin/", vá para a interface padrão de administração do Django
 ]

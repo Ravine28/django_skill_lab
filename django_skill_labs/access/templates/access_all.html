@@ -6,7 +6,7 @@
   
 <ul>
   {% for x in acessos_html %}
-    <li>{{ x.sistema.nome_sistema }} {{ x.cliente.nome_cliente }}</li>
+    <li><a href="{% url 'access_details_route' x.id %}">{{ x.system.system_name }} {{ x.client.client_name }}</a></li>
   {% endfor %}
 </ul>
 
