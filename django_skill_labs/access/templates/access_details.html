@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
+{% extends "access.html" %}
 
-<body>
+{% block title %}
+    Detalhes do Acesso
+{% endblock %}
 
-<h1>Detalhes do Acesso</h1>
+{% block content %}
+    <h1>Detalhes do Acesso</h1>
 <!--
     Sinxate:
         - access: objeto princial (instância do modelo Access);
@@ -12,15 +14,14 @@
         - system_name: nome do sistema acessado;
 -->
 
-<p><strong>Sistema:</strong> {{ access.system.system_name }}</p>
-<p><strong>Cliente:</strong> {{ access.client.client_name }}</p>
-<p><strong>Data de Criação:</strong> {{ access.system.system_creation_date}}</p>
-<p><strong>Descrição do Sistema:</strong> {{ access.system.system_description }}</p>
-<p><strong>Data de Acesso:</strong> {{ access.access_date }}</p>
-<p><strong>Log do Acesso:</strong> {{ access.access_log }}</p>
+    <p><strong>Sistema:</strong> {{ access.system.system_name }}</p>
+    <p><strong>Cliente:</strong> {{ access.client.client_name }}</p>
+    <p><strong>Data de Criação:</strong> {{ access.system.system_creation_date}}</p>
+    <p><strong>Descrição do Sistema:</strong> {{ access.system.system_description }}</p>
+    <p><strong>Data de Acesso:</strong> {{ access.access_date }}</p>
+    <p><strong>Log do Acesso:</strong> {{ access.access_log }}</p>
 
 
-<p><a href="{% url 'access_route' %}">Voltar</a></p>
+    <p><a href="{% url 'access_route' %}">Voltar</a></p>
 
-</body>
-</html>
+{% endblock %}
