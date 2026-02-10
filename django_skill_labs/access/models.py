@@ -28,7 +28,7 @@ class System(models.Model):
     '''
 
 class Client(models.Model):
-    lient_name = models.CharField(max_length=100)
+    client_name = models.CharField(max_length=100)
     '''
     Variável que recebe o nome do cliente, sendo este do tipo caracter (curto)
     '''
