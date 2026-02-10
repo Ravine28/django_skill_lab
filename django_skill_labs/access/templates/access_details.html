@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h1>Detalhes do Acesso</h1>
+
+<p><strong>Sistema:</strong> {{ acesso.sistema.nome_sistema }}</p>
+<p><strong>Cliente:</strong> {{ acesso.cliente.nome_cliente }}</p>
+<p><strong>Data de Acesso:</strong> {{ acesso.data_acesso }}</p>
+<p><strong>Descrição do Sistema:</strong> {{ acesso.sistema.descricao_sistema }}</p>
+<p><strong>Data de Criação:</strong> {{ acesso.sistema.data_criacao_acesso}}</p>
+
+<p><a href="{% url 'acesso' %}">Voltar</a></p>
+
+</body>
+</html>
