@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sistemas
+{% endblock %}
+
+{% block content %}
+<h1>Sistemas</h1>
+
+<ul>
+    {% for system in system_list %}
+        <li>{{ system.system_name }}</li>
+    {% empty %}
+        <li>Nenhum sistema cadastrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

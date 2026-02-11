@@ -1,9 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Acessos Registrados
+{% endblock %}
 
 {% block content %}
+<h1>Acessos</h1>
+
+<ul>
+    {% for access in access_list %}
+        <li>
+            <a href="{% url 'access_details' access.id %}">
+                {{ access.access_system.system_name }}
+                -
+                {{ access.access_client.client_name }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Nenhum acesso registrado.</li>
+    {% endfor %}
+</ul>
+
 {% endblock %}
