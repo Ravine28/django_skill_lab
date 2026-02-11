@@ -13,5 +13,11 @@ Detalhes do Acesso
 <p><strong>Data do acesso:</strong> {{ access.access_date }}</p>
 <p><strong>Log:</strong> {{ access.access_log }}</p>
 
+<form action="{% url 'access_revoke' access_details.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Revogar acesso</button>
+</form>
+
+
 <a href="{% url 'access' %}">Voltar</a>
 {% endblock %}

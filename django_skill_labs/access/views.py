@@ -4,14 +4,21 @@ from .models import Access, Client, System
 from .forms import AccessForm, ClientForm, SystemForm
 from .serializers import AccessSerializer, ClientSerializer, SystemSerializer
 from django.contrib.auth.decorators import login_required
-
-
+from django.views.decorators.http import require_POST, login_required
+from .forms import RegisterForm
+from django.shortcuts import render, redirect
 
 def home(request):
     return render(request, 'home.html')
 
 
-#create, read, update, delete (CRUD)
+#create, read, update, delete (CRUD) + revoke
+
+# API REST (DRF)
+class AccessViewSet(viewsets.ModelViewSet):
+    queryset = Access.objects.all()
+    serializer_class = AccessSerializer
+
 # Read (ler os acessos) e fazer login
 @login_required
 def access(request):
@@ -20,14 +27,13 @@ def access(request):
         'access': access
     })
 
-
 # Read (ler os detalhes de um acesso específico)
+@login_required
 def access_details(request, id):
     access_details = get_object_or_404(Access, id=id)
     return render(request, 'access_details.html', {
         'access_details': access_details
     })
-
 
 # Create (criar um novo acesso)
 def access_create(request):
@@ -40,7 +46,6 @@ def access_create(request):
         form = AccessForm()
 
     return render(request, 'form.html', {'form': form})
-
 
 # Update (atualizar um acesso existente)
 def access_update(request, id):
@@ -56,7 +61,6 @@ def access_update(request, id):
 
     return render(request, 'form.html', {'form': form})
 
-
 # Delete (excluir um acesso existente)
 def access_delete(request, id):
     access = get_object_or_404(Access, id=id)
@@ -68,29 +72,27 @@ def access_delete(request, id):
     return render(request, 'confirm_delete.html', {'object': access})
 
 # Revoke (revogar um acesso existente)
+@require_POST # proteger contra requisições GET acidentais
 def access_revoke(request, id):
     access = get_object_or_404(Access, id=id)
+    access.is_active = False
+    access.save()
+    return redirect('access_route')
 
-    if request.method == 'POST':
-        access.access_date = None  # Revoga o acesso definindo a data de acesso como None
-        access.save()
-        return redirect('access_route')
 
-    return render(request, 'confirm_revoke.html', {'object': access})
 
 # API REST (DRF)
-class AccessViewSet(viewsets.ModelViewSet):
-    queryset = Access.objects.all()
-    serializer_class = AccessSerializer
-
+class ClientViewSet(viewsets.ModelViewSet):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
 
 # Read (ler os clientes)
+@login_required
 def client(request):
     client = Client.objects.all()
     return render(request, 'client.html', {
         'client': client
     })
-
 
 # Create (criar um novo cliente)
 def client_create(request):
@@ -103,7 +105,6 @@ def client_create(request):
         form = ClientForm()
 
     return render(request, 'form.html', {'form': form})
-
 
 # Update (atualizar um cliente existente)
 def client_update(request, id):
@@ -119,7 +120,6 @@ def client_update(request, id):
 
     return render(request, 'form.html', {'form': form})
 
-
 # Delete (excluir um cliente existente)
 def client_delete(request, id):
     client = get_object_or_404(Client, id=id)
@@ -130,19 +130,20 @@ def client_delete(request, id):
 
     return render(request, 'confirm_delete.html', {'object': client})
 
-# API REST (DRF)
-class ClientViewSet(viewsets.ModelViewSet):
-    queryset = Client.objects.all()
-    serializer_class = ClientSerializer
 
+
+# API REST (DRF)
+class SystemViewSet(viewsets.ModelViewSet):
+    queryset = System.objects.all()
+    serializer_class = SystemSerializer
 
 # Read (ler os sistemas)
+@login_required
 def system(request):
     system = System.objects.all()
     return render(request, 'system.html', {
         'system': system
     })
-
 
 # Create (criar um novo sistema)
 def system_create(request):
@@ -155,7 +156,6 @@ def system_create(request):
         form = SystemForm()
 
     return render(request, 'form.html', {'form': form})
-
 
 # Update (atualizar um sistema existente)
 def system_update(request, id):
@@ -171,7 +171,6 @@ def system_update(request, id):
 
     return render(request, 'form.html', {'form': form})
 
-
 # Delete (excluir um sistema existente)
 def system_delete(request, id):
     system = get_object_or_404(System, id=id)
@@ -183,7 +182,14 @@ def system_delete(request, id):
     return render(request, 'confirm_delete.html', {'object': system})
 
 
-# API REST (DRF)
-class SystemViewSet(viewsets.ModelViewSet):
-    queryset = System.objects.all()
-    serializer_class = SystemSerializer
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = RegisterForm()
+
+    return render(request, 'register.html', {'form': form})
