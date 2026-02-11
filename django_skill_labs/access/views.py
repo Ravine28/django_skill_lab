@@ -4,7 +4,7 @@ from .models import Access, Client, System
 from .forms import AccessForm, ClientForm, SystemForm
 from .serializers import AccessSerializer, ClientSerializer, SystemSerializer
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST, login_required
+from django.views.decorators.http import require_POST
 from .forms import RegisterForm
 from django.shortcuts import render, redirect
 
