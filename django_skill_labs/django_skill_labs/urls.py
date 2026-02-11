@@ -27,5 +27,6 @@ router.register('access', AccessViewSet)
 urlpatterns = [
     path('', include('access.urls')), # Se a URL estiver vazia, vá para a App "access" via access.urls
     path('admin/', admin.site.urls), # Se a URL iniciar em "admin/", vá para a interface padrão de administração do Django
+    path('accounts/', include('django.contrib.auth.urls')), # Se a URL iniciar em "accounts/", vá para as URLs de autenticação do Django
     path('api/', include(router.urls)),
 ]
