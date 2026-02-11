@@ -3,6 +3,8 @@ from rest_framework import viewsets
 from .models import Access, Client, System
 from .forms import AccessForm, ClientForm, SystemForm
 from .serializers import AccessSerializer, ClientSerializer, SystemSerializer
+from django.contrib.auth.decorators import login_required
+
 
 
 def home(request):
@@ -10,7 +12,8 @@ def home(request):
 
 
 #create, read, update, delete (CRUD)
-# Read (ler os acessos)
+# Read (ler os acessos) e fazer login
+@login_required
 def access(request):
     access = Access.objects.all()
     return render(request, 'access.html', {
@@ -64,6 +67,16 @@ def access_delete(request, id):
 
     return render(request, 'confirm_delete.html', {'object': access})
 
+# Revoke (revogar um acesso existente)
+def access_revoke(request, id):
+    access = get_object_or_404(Access, id=id)
+
+    if request.method == 'POST':
+        access.access_date = None  # Revoga o acesso definindo a data de acesso como None
+        access.save()
+        return redirect('access_route')
+
+    return render(request, 'confirm_revoke.html', {'object': access})
 
 # API REST (DRF)
 class AccessViewSet(viewsets.ModelViewSet):
