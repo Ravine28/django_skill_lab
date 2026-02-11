@@ -75,9 +75,9 @@ class Access(models.Model):
     automaticamente a data e hora atual
     '''
 
-    access_log = models.TextField()
+    is_active = models.BooleanField(default=True)
     '''
-    Variável de texto para registrar o log do acesso
+    Verificar se o acesso está ativo ou não
     '''
 
     def __str__(self):
