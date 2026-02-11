@@ -1,5 +1,6 @@
 from django.urls import path # Função para definir (mapear --> apontar) rotas de URL
 from . import views
+
 '''
 Sintaxe: path('caminho/', views.nome_da_view, name='nome_da_url')
     - 'caminho/': O caminho da URL que será acessada no navegador.
@@ -13,7 +14,12 @@ um valor inteiro (id do acesso) e o passa para a view access_details como uma va
     - id: variável que armazena o número de referência do acesso. É passado para a view access_details como uma variável
 '''
 
+
 urlpatterns = [ # Lista de URLs para Apps access, onde cada URL é associada a uma view
+    path ('', views.home, name='home'),
     path('acesso/', views.access, name='access_route'),
-    path('detalhes-acesso/<int:id>/', views.access_details, name='access_details_route'),
+    path('acesso/<int:id>/', views.access_details, name='access_details_route'),
+    path('clientes/', views.client, name='client_route'),
+    path('sistemas/', views.system, name='system_route'),
+    path('clientes/novo/', views.client_create, name='client_create'),
 ]

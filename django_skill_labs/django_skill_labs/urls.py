@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from access.views import ClientViewSet, SystemViewSet, AccessViewSet
+
+router = DefaultRouter()
+router.register('clients', ClientViewSet)
+router.register('systems', SystemViewSet)
+router.register('access', AccessViewSet)
 
 urlpatterns = [
     path('', include('access.urls')), # Se a URL estiver vazia, vá para a App "access" via access.urls
     path('admin/', admin.site.urls), # Se a URL iniciar em "admin/", vá para a interface padrão de administração do Django
+    path('api/', include(router.urls)),
 ]
