@@ -1,12 +1,19 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from rest_framework import viewsets
-from .models import Access, Client, System
-from .forms import AccessForm, ClientForm, SystemForm
-from .serializers import AccessSerializer, ClientSerializer, SystemSerializer
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
-from .forms import RegisterForm
-from django.shortcuts import render, redirect
+from rest_framework import viewsets
+from .forms import AccessForm, ClientForm, SystemForm, RegisterForm
+from .models import Access, Client, System
+from .serializers import AccessSerializer, ClientSerializer, SystemSerializer
+
+'''
+  Padrão mais aceito (PEP8 + Django) é: 
+    # 1. Bibliotecas padrões Python
+    # 2. Django (Bibliotecas do Framework)
+    # 3. Third-party (Bibliotecas de terceiros)
+    # 4. Local Apps (Arquivos do seu projeto)
+
+'''
 
 def home(request):
     return render(request, 'home.html')
