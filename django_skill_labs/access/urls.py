@@ -19,26 +19,27 @@ urlpatterns = [ # Lista de URLs para Apps access, onde cada URL é associada a u
     path ('', views.home, name='home'),
 
     # Access
-    path('acesso/', views.access, name='access_route'),
-    path('acesso/<int:id>/', views.access_details, name='access_details_route'),
-    path('acesso/novo/', views.access_create, name='access_create_route'),
-    path('acesso/atualizar/<int:id>/', views.access_update, name='access_update_route'),
-    path('acesso/excluir/<int:id>/', views.access_delete, name='access_delete_route'),
-    path('acessos/<int:id>/revogar/', views.access_revoke, name='access_revoke_route'),
+    path('acesso/', views.access, name='access'),
+    path('acesso/<int:id>/', views.access_details, name='access_details'),
+    path('acesso/novo/', views.access_create, name='access_create'),
+    path('acesso/atualizar/<int:id>/', views.access_update, name='access_update'),
+    path('acesso/excluir/<int:id>/', views.access_delete, name='access_delete'),
+    path('acessos/<int:id>/revogar/', views.access_revoke, name='access_revoke'),
+
 
 
     # Client
-    path('clientes/', views.client, name='client_route'),
-    path('clientes/novo/', views.client_create, name='client_create_route'),
-    path('clientes/atualizar/<int:id>/', views.client_update, name='client_update_route'),
-    path('clientes/excluir/<int:id>/', views.client_delete, name='client_delete_route'),
+    path('clientes/', views.client, name='client'),
+    path('clientes/novo/', views.client_create, name='client_create'),
+    path('clientes/atualizar/<int:id>/', views.client_update, name='client_update'),
+    path('clientes/excluir/<int:id>/', views.client_delete, name='client_delete'),
 
     # System
-    path('sistemas/', views.system, name='system_route'),
-    path('sistemas/novo/', views.system_create, name='system_create_route'),
-    path('sistemas/atualizar/<int:id>/', views.system_update, name='system_update_route'),
-    path('sistemas/excluir/<int:id>/', views.system_delete, name='system_delete_route'),
+    path('sistemas/', views.system, name='system'),
+    path('sistemas/novo/', views.system_create, name='system_create'),
+    path('sistemas/atualizar/<int:id>/', views.system_update, name='system_update'),
+    path('sistemas/excluir/<int:id>/', views.system_delete, name='system_delete'),
 
     # Registration
-    path('register/', views.register, name='register_route'),
+    path('register/', views.register, name='register'),
 ]
