@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
+from django.http import HttpResponse
+from django.template import loader
 from rest_framework import viewsets
 from .forms import AccessForm, ClientForm, SystemForm, RegisterForm
 from .models import Access, Client, System
@@ -18,9 +20,7 @@ from .serializers import AccessSerializer, ClientSerializer, SystemSerializer
 def home(request):
     return render(request, 'home.html')
 
-
 #create, read, update, delete (CRUD) + revoke
-
 # API REST (DRF)
 class AccessViewSet(viewsets.ModelViewSet):
     queryset = Access.objects.all()
@@ -86,8 +86,6 @@ def access_revoke(request, id):
     access.save()
     return redirect('access_route')
 
-
-
 # API REST (DRF)
 class ClientViewSet(viewsets.ModelViewSet):
     queryset = Client.objects.all()
@@ -136,8 +134,6 @@ def client_delete(request, id):
         return redirect('client_route')
 
     return render(request, 'confirm_delete.html', {'object': client})
-
-
 
 # API REST (DRF)
 class SystemViewSet(viewsets.ModelViewSet):
@@ -188,8 +184,6 @@ def system_delete(request, id):
 
     return render(request, 'confirm_delete.html', {'object': system})
 
-
-
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -200,3 +194,17 @@ def register(request):
         form = RegisterForm()
 
     return render(request, 'register.html', {'form': form})
+
+def main(request):
+    template = loader.get_template('main.html')
+    return HttpResponse(template.render(request))
+
+def testing(request):
+    template = loader.get_template('testing.html')
+    context = {
+        'message': 'Olá, esta é uma mensagem de teste!',
+        'number': 42,
+        'items': ['Galinha', 'Suricato', 'Macaco'],
+    }
+    return HttpResponse(template.render(context, request))
+
