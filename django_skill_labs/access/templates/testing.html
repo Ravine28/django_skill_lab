@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta harset="utf-8">
+        <title>Testing</title>
+    </head>
+    <body>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <h1>Itens de teste</h1>
+        {% for x in items %}
+            <p>{{ x }}</p>
+        {% empty %}
+            <p>Nenhum item encontrado.</p>
+        {% endfor %}
+
+    </body>
+</html>

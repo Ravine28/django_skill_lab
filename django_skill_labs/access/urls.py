@@ -26,8 +26,6 @@ urlpatterns = [ # Lista de URLs para Apps access, onde cada URL é associada a u
     path('acesso/excluir/<int:id>/', views.access_delete, name='access_delete'),
     path('acessos/<int:id>/revogar/', views.access_revoke, name='access_revoke'),
 
-
-
     # Client
     path('clientes/', views.client, name='client'),
     path('clientes/novo/', views.client_create, name='client_create'),
@@ -42,4 +40,11 @@ urlpatterns = [ # Lista de URLs para Apps access, onde cada URL é associada a u
 
     # Registration
     path('register/', views.register, name='register'),
+
+    # Testing
+    path('testing/', views.testing, name='testing'),
+
+    # Home
+    path('main/', views.main, name='main'),
+
 ]

@@ -118,3 +118,13 @@ FUNÇÕES NO DRF
 
             **kwargs = argumentos nomeados (id_objeto)
 
+ERROS
+
+    404: página não encontrada - 
+
+
+IMPORTANTE: Quando DEBUG = False, o Django exige que você especifique os hosts que você permitirá isso Projeto Django para fugir.
+
+Na produção, isso deve ser substituído por um nome de domínio adequado:
+
+ALLOWED_HOSTS = ['yourdomain.com']
