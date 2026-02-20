@@ -11,9 +11,9 @@ Acessos Registrados
     {% for access in access_list %}
         <li>
             <a href="{% url 'access_details' access.id %}">
-                {{ access.access_system.system_name }}
+                {{ access.system.name }}
                 -
-                {{ access.access_client.client_name }}
+                {{ access.client.name }}
             </a>
         </li>
     {% empty %}
