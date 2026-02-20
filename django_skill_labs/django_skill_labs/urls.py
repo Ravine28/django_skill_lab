@@ -30,3 +30,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')), # Se a URL iniciar em "accounts/", vá para as URLs de autenticação do Django
     path('api/', include(router.urls)),
 ]
+
+
+from django.contrib import admin
+from django.urls import include, path

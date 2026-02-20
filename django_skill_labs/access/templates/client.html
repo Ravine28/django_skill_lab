@@ -9,7 +9,7 @@ Clientes
 
 <ul>
     {% for client in client_list %}
-        <li>{{ client.client_name }} - {{ client.client_email }}</li>
+        <li>{{ client.name }} - {{ client.email }}</li>
     {% empty %}
         <li>Nenhum cliente cadastrado.</li>
     {% endfor %}
