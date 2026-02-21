@@ -7,6 +7,12 @@ class AccessAdmin(admin.ModelAdmin):
     list_filter = ("system", "revoked_at")
     search_fields = ("client__name", "system__name")
 
-'''admin.site.register(System) # Registra o model System para que ele possa ser gerenciado através do admin do Django
-admin.site.register(Client) # Registra o model Client para que ele possa ser gerenciado através do admin do Django
-admin.site.register(Access) # Registra o model Access para que ele possa ser gerenciado através do admin do Django'''
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
+    search_fields = ("name",)
+
+@admin.register(System)
+class SystemAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
+    search_fields = ("name",)

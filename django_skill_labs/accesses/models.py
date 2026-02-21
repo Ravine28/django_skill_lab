@@ -8,8 +8,8 @@ class System(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = "Acesso"
-        verbose_name_plural = "Acessos"
+        verbose_name = "Sistema"
+        verbose_name_plural = "Sistemas"
 
     def __str__(self):
         return self.name
